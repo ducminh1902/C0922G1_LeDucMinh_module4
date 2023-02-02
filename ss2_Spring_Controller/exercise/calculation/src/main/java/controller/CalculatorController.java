@@ -34,6 +34,9 @@ public class CalculatorController {
                     result = String.valueOf(num1 / num2);
                 }
                 break;
+            default:
+                System.out.println("lỗi cú pháp");
+                break;
         }
         model.addAttribute("num1",num1);
         model.addAttribute("num2",num2);
