@@ -13,7 +13,7 @@ import java.util.List;
 public class EmailController {
 
     @Autowired
-    IEmailService emailService ;
+    private static IEmailService emailService ;
 
     @GetMapping("/emails")
     public String display(Model model){

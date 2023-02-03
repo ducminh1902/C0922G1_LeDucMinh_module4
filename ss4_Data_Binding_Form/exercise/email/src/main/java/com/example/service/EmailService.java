@@ -11,7 +11,7 @@ import java.util.List;
 public class EmailService implements IEmailService{
 
     @Autowired
-    IEmailReponsitory emailReponsitory;
+    private static IEmailReponsitory emailReponsitory;
 
     @Override
     public List<Email> display() {
