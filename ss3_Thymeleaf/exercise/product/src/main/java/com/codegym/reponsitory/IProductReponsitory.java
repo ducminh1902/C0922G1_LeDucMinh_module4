@@ -12,4 +12,10 @@ public interface IProductReponsitory {
 
     void add(Product product);
 
+    Product findById(int id);
+
+    void update(Product product);
+
+    List<Product> findByName(String name);
+
 }

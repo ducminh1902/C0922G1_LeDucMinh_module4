@@ -29,5 +29,20 @@ public class ProductService implements IProductService {
         productReponsitory.add(product);
     }
 
+    @Override
+    public Product findById(int id) {
+        return productReponsitory.findById(id);
+    }
+
+    @Override
+    public List<Product> findByName(String name) {
+        return productReponsitory.findByName(name);
+    }
+
+    @Override
+    public void update(Product product) {
+         productReponsitory.update(product);
+    }
+
 
 }

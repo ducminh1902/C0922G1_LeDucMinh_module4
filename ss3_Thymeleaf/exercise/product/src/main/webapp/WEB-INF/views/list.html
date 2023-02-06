@@ -8,8 +8,11 @@
 </head>
 <body>
 <h1 style="color: orange;text-align: center">Product List</h1>
-<a href="/showForm">Add New Product</a>
 <br>
+<form action="/findByName">
+    <input type="text" name="name">
+    <button type="submit">Search</button>
+</form>
 <table class="table table-striped">
     <tr>
         <th>Id</th>
@@ -17,6 +20,8 @@
         <th>Brand</th>
         <th>Describe</th>
         <th>Delete</th>
+        <th>Edit</th>
+        <th>Detail</th>
     </tr>
     <tr th:each="product : ${list}">
         <td th:text="${product.id}"></td>
@@ -24,7 +29,10 @@
         <td th:text="${product.brand}"></td>
         <td th:text="${product.describe}"></td>
         <td><a th:href="@{/delete/{id}(id=${product.id})}">delete</a></td>
+        <td><a th:href="@{/showFormEdit/{id}(id=${product.id})}">edit</a></td>
+        <td><a th:href="@{/findByID/{id}(id=${product.id})}">detail</a></td>
     </tr>
 </table>
+<a href="/showForm">Add New Product</a>
 </body>
 </html>
