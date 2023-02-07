@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Blog Detail</h1>
+<br>
+<form th:each="blog : ${list2}">
+  <p>ID :</p> <p th:text="${blog.id}"></p>
+  <br>
+  Title : <p th:text="${blog.title}"></p>
+  <br>
+  Writer :<p th:text="${blog.writer}"></p>
+  <br>
+  Content : <p th:text="${blog.content}"></p>
+  <br>
+  Publication Date : <p th:text="${blog.dateCreate}"></p>
+</form>
+
+</body>
+</html>
