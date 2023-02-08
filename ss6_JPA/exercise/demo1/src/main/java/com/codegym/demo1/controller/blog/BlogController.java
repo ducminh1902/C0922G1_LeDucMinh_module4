@@ -1,7 +1,7 @@
-package com.codegym.demo1.controller;
+package com.codegym.demo1.controller.blog;
 
-import com.codegym.demo1.model.Blog;
-import com.codegym.demo1.service.impl.IBlogService;
+import com.codegym.demo1.model.blog.Blog;
+import com.codegym.demo1.service.blog.impl.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,8 +10,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class BlogController {

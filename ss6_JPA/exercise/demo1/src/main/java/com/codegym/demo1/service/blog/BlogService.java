@@ -1,15 +1,12 @@
-package com.codegym.demo1.service;
+package com.codegym.demo1.service.blog;
 
-import com.codegym.demo1.model.Blog;
-import com.codegym.demo1.reponsitory.IBlogReponsitory;
-import com.codegym.demo1.service.impl.IBlogService;
+import com.codegym.demo1.model.blog.Blog;
+import com.codegym.demo1.reponsitory.blog.IBlogReponsitory;
+import com.codegym.demo1.service.blog.impl.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class BlogService implements IBlogService {

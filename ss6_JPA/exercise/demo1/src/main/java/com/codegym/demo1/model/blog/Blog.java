@@ -1,9 +1,8 @@
-package com.codegym.demo1.model;
+package com.codegym.demo1.model.blog;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.codegym.demo1.model.category.Category;
+
+import javax.persistence.*;
 
 @Entity
 public class Blog {
@@ -14,6 +13,10 @@ public class Blog {
     private String writer;
     private String content;
     private String dateCreate;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id" ,referencedColumnName = "id")
+    private Category category;
 
     public Blog() {
     }
