@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>New Blog</h1>
-<form action="/add" method="post" th:object="${blog}">
+<form action="/add&update" method="post" th:object="${blog}">
     Title :<input type="text" th:field="*{title}">
     <br>
     Writer : <input type="text" th:field="*{writer}">

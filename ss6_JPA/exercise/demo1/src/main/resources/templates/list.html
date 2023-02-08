@@ -8,6 +8,19 @@
 </head>
 <body>
 <h1 style="text-align: center">Blog List</h1>
+<!--<form action="/search">-->
+<!--    <input type="text" name="nameSearch">-->
+<!--    <button type="submit">Search</button>-->
+<!--</form>-->
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a href="/showForm" style="color: red">Add New Blog</a>
+        <form action="/Blogs" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nameSearch" >
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 <table class="table table-bordered">
     <tr>
         <td><b>#</b></td>
@@ -19,7 +32,7 @@
         <td><b>Delete</b></td>
         <td><b>Edit</b></td>
     </tr>
-    <tr th:each="blog : ${list}">
+    <tr th:each="blog : ${blogPage}">
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.title}"></td>
         <td th:text="${blog.writer}"></td>
@@ -30,6 +43,13 @@
         <td><a style="color: green" th:href="@{/showFormUpdate/{id}(id=${blog.id})}">edit</a></td>
     </tr>
 </table>
-<a href="/showForm">Add New Blog</a>
+<!--phân trang-->
+<center>
+<div>
+    <a th:href="@{/Blogs(page=${blogPage.number -1},nameSearch=${nameSearch})}" th:if="${blogPage.hasPrevious()}">Trước</a>
+    <span th:text="${blogPage.number+1}"></span>/<span th:text="${blogPage.totalPages}"></span>
+    <a th:href="@{/Blogs(page=${blogPage.number +1},nameSearch=${nameSearch})}" th:if="${blogPage.hasNext()}">Sau</a>
+</div>
+</center>
 </body>
 </html>

@@ -4,6 +4,8 @@ import com.codegym.demo1.model.Blog;
 import com.codegym.demo1.reponsitory.IBlogReponsitory;
 import com.codegym.demo1.service.impl.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +15,11 @@ import java.util.List;
 public class BlogService implements IBlogService {
 
     @Autowired
-    IBlogReponsitory blogReponsitory;
+   private IBlogReponsitory blogReponsitory;
 
     @Override
-    public List<Blog> findAll() {
-        return blogReponsitory.findAll();
+    public Page<Blog> findAll(Pageable pageable) {
+        return blogReponsitory.findAll(pageable);
     }
 
     @Override
@@ -37,6 +39,11 @@ public class BlogService implements IBlogService {
     @Override
     public Blog update(Blog blog) {
         return blogReponsitory.save(blog);
+    }
+
+    @Override
+    public Page<Blog> findByName(String title,Pageable pageable) {
+        return blogReponsitory.findByTitleContaining(title,pageable);
     }
 
 

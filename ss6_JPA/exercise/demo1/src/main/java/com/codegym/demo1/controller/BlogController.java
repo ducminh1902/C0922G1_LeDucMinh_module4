@@ -3,6 +3,10 @@ package com.codegym.demo1.controller;
 import com.codegym.demo1.model.Blog;
 import com.codegym.demo1.service.impl.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +17,14 @@ import java.util.List;
 public class BlogController {
 
     @Autowired
-    IBlogService blogService;
+    private IBlogService blogService;
 
     @GetMapping("/Blogs")
-    public String showList(Model model){
-        List<Blog> blogList = blogService.findAll();
-        model.addAttribute("list",blogList);
+    public String showList(Model model,@RequestParam(required = false,defaultValue = "") String nameSearch,
+                           @PageableDefault(size = 3,page = 0,sort = "title",direction = Sort.Direction.ASC) Pageable pageable){
+        Page<Blog> blogPage = blogService.findByName(nameSearch, pageable);
+        model.addAttribute("nameSearch",nameSearch);
+        model.addAttribute("blogPage",blogPage);
         return "list";
     }
 
@@ -29,10 +35,10 @@ public class BlogController {
         return "create";
     }
 
-    @PostMapping("/add")
-    public String create(Model model, @ModelAttribute("blog") Blog blog){
+    @PostMapping("/add&update")
+    public String create(Model model, @ModelAttribute("blog") Blog blog,@PageableDefault Pageable pageable){
        blogService.add(blog);
-       model.addAttribute("list",blogService.findAll());
+       model.addAttribute("blogPage",blogService.findAll(pageable));
        return "list";
     }
 
@@ -45,9 +51,9 @@ public class BlogController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable int id){
+    public String delete(Model model, @PathVariable int id,@PageableDefault Pageable pageable){
         blogService.delete(id);
-        model.addAttribute("list",blogService.findAll());
+        model.addAttribute("blogPage",blogService.findAll(pageable));
         return "list";
     }
 
@@ -65,4 +71,6 @@ public class BlogController {
 ////        model.addAttribute("list",blogService.findAll());
 //        return "redirect:/Blogs";
 //    }
+
+
 }
