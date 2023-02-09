@@ -1,6 +1,6 @@
 package com.codegym.demo1.controller.blog;
 
-import com.codegym.demo1.model.blog.Blog;
+import com.codegym.demo1.model.Blog;
 import com.codegym.demo1.service.blog.impl.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

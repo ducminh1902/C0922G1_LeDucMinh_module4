@@ -1,6 +1,4 @@
-package com.codegym.demo1.model.category;
-
-import com.codegym.demo1.model.blog.Blog;
+package com.codegym.demo1.model;
 
 import javax.persistence.*;
 import java.util.Set;

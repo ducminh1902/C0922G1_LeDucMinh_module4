@@ -1,6 +1,6 @@
-package com.codegym.demo1.model.blog;
+package com.codegym.demo1.model;
 
-import com.codegym.demo1.model.category.Category;
+import com.codegym.demo1.model.Category;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class Blog {
     private String dateCreate;
 
     @ManyToOne
-    @JoinColumn(name = "type_id" ,referencedColumnName = "id")
+    @JoinColumn(name = "category_id" ,referencedColumnName = "id")
     private Category category;
 
     public Blog() {

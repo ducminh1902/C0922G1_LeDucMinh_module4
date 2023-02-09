@@ -1,6 +1,6 @@
 package com.codegym.demo1.service.category.impl;
 
-import com.codegym.demo1.model.category.Category;
+import com.codegym.demo1.model.Category;
 
 import java.util.List;
 
