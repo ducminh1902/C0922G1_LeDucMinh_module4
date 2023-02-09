@@ -1,23 +1,31 @@
-package com.example.song_validate.model;
+package com.example.song_validate.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
-@Entity
-public class Song {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SongDto {
+
     private int id;
+    @NotEmpty
+    @Max(800)
+    @Pattern(regexp = "^[a-z ,A-Z0-9]+$")
     private String name;
+
+    @NotEmpty
+    @Max(300)
+    @Pattern(regexp ="^[a-z ,A-Z0-9]+$" )
     private String artist;
+
+    @NotEmpty
+    @Max(1000)
+    @Pattern(regexp ="^[a-z ,A-Z0-9]+$" )
     private String type;
 
-    public Song() {
+    public SongDto() {
     }
 
-    public Song(int id, String name, String artist, String type) {
+    public SongDto(int id, String name, String artist, String type) {
         this.id = id;
         this.name = name;
         this.artist = artist;
