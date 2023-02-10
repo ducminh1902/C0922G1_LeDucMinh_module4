@@ -4,6 +4,8 @@ import com.example.song_validate.model.Song;
 import com.example.song_validate.reponsitory.ISongReponsitory;
 import com.example.song_validate.service.impl.ISongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class SongService implements ISongService {
 
 
     @Override
-    public List<Song> findAll() {
-        return songReponsitory.findAll();
+    public Page<Song> findAll(Pageable pageable) {
+        return songReponsitory.findAll(pageable);
     }
 
     @Override
