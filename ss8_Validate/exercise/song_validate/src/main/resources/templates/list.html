@@ -14,12 +14,14 @@
     <th>Name</th>
     <th>Artist</th>
     <th>Type</th>
+    <th>edit</th>
   </tr>
   <tr th:each="song : ${list}">
     <td th:text="${song.id}"></td>
     <td th:text="${song.name}"></td>
     <td th:text="${song.artist}"></td>
     <td th:text="${song.type}"></td>
+    <td><a th:href="@{/showFormUpdate/__${song.id}__}">edit</a></td>
   </tr>
 </table>
 <a href="/showForm">add new song</a>

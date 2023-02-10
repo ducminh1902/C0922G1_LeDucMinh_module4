@@ -9,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -27,7 +25,7 @@ public class SongController {
 
     @GetMapping("/showForm")
     public String showForm(Model model){
-        model.addAttribute("song",new Song());
+        model.addAttribute("songDto",new SongDto());
         return "create";
     }
 
@@ -43,6 +41,27 @@ public class SongController {
         BeanUtils.copyProperties(songDto,song);
         songService.add(song);
         redirects.addFlashAttribute("mess", "Thêm mới thành công");
-        return "list";
+        return "redirect:/song";
+    }
+
+    @GetMapping("/showFormUpdate/{id}")
+    public  String showFormEdit(Model model, @PathVariable int id){
+         model.addAttribute("songDto", songService.findById(id));
+          return "update";
+    }
+
+    @PostMapping("/update")
+    public  String update(Model model, @Validated @ModelAttribute SongDto songDto,
+                          BindingResult bindingResult, RedirectAttributes redirects){
+
+        if (bindingResult.hasErrors()){
+            model.addAttribute("songDto",songDto);
+            return "create";
+        }
+        Song song = new Song();
+        BeanUtils.copyProperties(songDto,song);
+        songService.add(song);
+        redirects.addFlashAttribute("mess", "Thêm mới thành công");
+        return "redirect:/song";
     }
 }

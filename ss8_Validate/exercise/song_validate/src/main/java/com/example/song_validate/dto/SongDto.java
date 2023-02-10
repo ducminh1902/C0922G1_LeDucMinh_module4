@@ -3,23 +3,24 @@ package com.example.song_validate.dto;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class SongDto {
 
     private int id;
     @NotEmpty
-    @Max(800)
-    @Pattern(regexp = "^[a-z ,A-Z0-9]+$")
+    @Size(min = 1,max = 800,message = "không được quá 800 chữ")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "tên  bài hát không được chứa kí tự đặc biệt")
     private String name;
 
     @NotEmpty
-    @Max(300)
-    @Pattern(regexp ="^[a-z ,A-Z0-9]+$" )
+    @Size(min = 1,max = 300, message = "không được quá 300 chữ")
+    @Pattern(regexp ="^[a-zA-Z0-9]+$" ,message = "tên nghệ sĩ không được chứa kí tự đặc biệt" )
     private String artist;
 
     @NotEmpty
-    @Max(1000)
-    @Pattern(regexp ="^[a-z ,A-Z0-9]+$" )
+    @Size(min = 1 ,max = 1000,message = "không được quá 1000 chữ")
+    @Pattern(regexp ="^[a-z ,A-Z0-9]+$",message = "thể loại được chứa dấu (,) nhưng không được chứa kí tự đặc biệt" )
     private String type;
 
     public SongDto() {
