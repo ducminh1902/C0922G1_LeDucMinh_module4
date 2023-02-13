@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>INFORMATION OF CUSTOMER</h1>
+<form th:each="customer1 : ${customer1}">
+  <b>Id : </b><input th:text="${customer1.id}">
+  <b>Customer Type Id : </b><input th:text="${customer.customerTypeId}">
+  <b>Name : </b><input th:text="${customer.name}">
+  <b>Date Of Birth : </b><input th:text="${customer.dateOfBirth}">
+  <b>Gender : </b><input th:text="${customer.gender}">
+  <b>Id Card : </b><input th:text="${customer.idCard}">
+  <b>Phone Number : </b><input th:text="${customer.phoneNUmber}">
+  <b>Email : </b><input th:text="${customer.email}">
+  <b>Address : </b><input th:text="${customer.address}">
+</form>
+<a th:href="/customer">Ok , back to list</a>
+</body>
+</html>
