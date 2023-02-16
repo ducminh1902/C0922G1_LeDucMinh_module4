@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.6.3.min.js"></script>
+</head>
+<body>
+<h1 style="text-align: center">Danh Sách Blog</h1>
+<form style="text-align: center" >
+    <input type="text" placeholder="Title" name="title" id="searchName">
+    <button onclick="showList()">Search</button>
+</form>
+<br>
+<center>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>writer</th>
+            <th>content</th>
+            <th>date create</th>
+        </tr>
+        </thead>
+        <tbody id="my-body">
+
+        </tbody>
+    </table>
+</center>
+
+<script>
+    showList()
+  function showList(){
+      let searchName = $('#searchName').val();
+      let searchName1= '?name=' +searchName;
+    $.ajax({
+      type:"GET",
+       dataType:"json",
+      url:"http://localhost:8080/api/blog"+ searchName1,
+      success:function (data1){
+          let data= data1.content;
+        let table = '';
+        for (let i = 0; i <data.length ; i++) {
+              table +=`<tr>`
+              table +=`<td>${data[i].id}</td>`
+              table +=`<td>${data[i].title} </td>`
+              table +=`<td>${data[i].writer} </td>`
+              table +=`<td>${data[i].content}</td>`
+              table +=`<td>${data[i].dateCreate}</td>`
+          table +=`</tr>`
+        }
+        $('#my-body').html(table);
+      },
+        error: function () {
+          alert("không tìm thấy");
+            
+        }
+    })
+  }
+
+//   // tìm kiếm
+// search()
+//   function search(){
+//         let title = $('#title').val();
+//         $.ajax({
+//             type: "GET",
+//             dataType: "json",
+//             url: "http://localhost:8080/api/blog/search" + title,
+//             success:function (data1){
+//                 let data= data1.content;
+//                 let table = '';
+//                 for (let i = 0; i <data.length ; i++) {
+//                     table +=`<tr>`
+//                     table +=`<td>${data[i].id}</td>`
+//                     table +=`<td>${data[i].title} </td>`
+//                     table +=`<td>${data[i].writer} </td>`
+//                     table +=`<td>${data[i].content}</td>`
+//                     table +=`<td>${data[i].dateCreate}</td>`
+//                     table +=`</tr>`
+//                 }
+//                 $('#my-body').html(table);
+//             }
+//         });
+//         $('#title').val("")
+//   }
+</script>
+</body>
+</html>
