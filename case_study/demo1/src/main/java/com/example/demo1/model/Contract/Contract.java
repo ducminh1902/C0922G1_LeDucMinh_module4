@@ -29,5 +29,5 @@ public class Contract {
     private Employee employee;
 
     @OneToMany(mappedBy = "contract")
-    private Set<Contract> contractSet;
+    private Set<ContractDetail> contractDetailSet;
 }

@@ -14,6 +14,6 @@ public class AttachFacility {
     private String status;
 
     @OneToMany(mappedBy = "attachFacility")
-    private Set<AttachFacility> attachFacilitySet;
+    private Set<ContractDetail> contractDetailSet;
 
 }
