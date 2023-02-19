@@ -5,6 +5,7 @@ import com.example.demo1.model.employee.Employee;
 import com.example.demo1.model.facility.Facility;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Contract {
@@ -23,4 +24,10 @@ public class Contract {
     @JoinColumn(name = "facility_id", referencedColumnName = "id")
     private Facility facility;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
+    private Employee employee;
+
+    @OneToMany(mappedBy = "contract")
+    private Set<Contract> contractSet;
 }

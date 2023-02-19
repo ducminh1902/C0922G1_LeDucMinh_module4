@@ -1,6 +1,7 @@
 package com.example.demo1.model.employee;
 
 import com.example.demo1.model.Contract.Contract;
+import com.example.demo1.model.User.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,6 +35,9 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private Set<Contract> contractSet;
 
+    @ManyToOne
+    @JoinColumn(name = "username",referencedColumnName = "userName")
+    private User user;
 
     public Employee() {
     }
