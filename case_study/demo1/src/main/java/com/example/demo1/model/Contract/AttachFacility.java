@@ -1,9 +1,7 @@
 package com.example.demo1.model.Contract;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class AttachFacility {
@@ -11,5 +9,11 @@ public class AttachFacility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    p
+    private double cost;
+    private String unit;
+    private String status;
+
+    @OneToMany(mappedBy = "attachFacility")
+    private Set<AttachFacility> attachFacilitySet;
+
 }
