@@ -7,14 +7,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
+
+
 <h1 style="text-align: center;color: darkseagreen">List Customer</h1>
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/showForm}">ADD NEW CUSTOMER</a>
         <form action="/search" class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search" name="name">
-            <input class="form-control me-2" type="search" placeholder="Gender" aria-label="Search" name="gender">
-            <input class="form-control me-2" type="search" placeholder="Address" aria-label="Search" name="address">
+            <input class="form-control me-2" type="search" placeholder="Email" aria-label="Search" name="email">
+                <select  name="customerType">
+                    <option th:value="null">Search type</option>
+                    <option  th:each="customerType: ${customerTypeList}" th:value="${customerType.id}" th:text="${customerType.name}"></option>
+                </select>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -22,7 +27,7 @@
 <table   class="table table-success table-striped " >
     <tr>
         <th>#</th>
-        <th>Customer Type Id</th>
+        <th>Customer Type</th>
         <th>Name</th>
         <th>Date of Birth</th>
         <th>Gender</th>
@@ -32,11 +37,12 @@
         <th>Address</th>
         <th>Delete</th>
         <th>Edit</th>
+        <th>Detail</th>
     </tr>
     <tr th:each="customer : ${list}">
         <td th:text="${customer.id}"></td>
-        <td th:text="${customer.customerTypeId}"></td>
-        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.customerType.name}"></td>
+        <td  th:text="${customer.name}"></td>
         <td th:text="${customer.dateOfBirth}"></td>
         <td th:if="${customer.gender == 1}">
             Nam
@@ -53,6 +59,7 @@
         <td th:text="${customer.address}"></td>
         <td><a th:href="@{/delete/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">delete</button></a></td>
         <td><a th:href="@{/showFormEdit/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">edit</button></a></td>
+        <td><a th:href="@{/detail/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">detail</button></a></td>
     </tr>
 </table>
 <center>
@@ -62,6 +69,7 @@
         <a th:href="@{/customer(page=${list.number +1})}" th:if="${list.hasNext()}">Sau</a>
     </div>
 </center>
+
 
 </body>
 </html>

@@ -1,6 +1,7 @@
-package com.example.demo1.service;
+package com.example.demo1.service.customer;
 
 import com.example.demo1.model.customer.Customer;
+import com.example.demo1.model.customer.CustomerType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,5 +19,5 @@ public interface ICustomerService {
 
     void update(Customer customer);
 
-    List<Customer> findByNameGender(String name, int gender,String address);
+    List<Customer> findByNameGender(String name, String email, String customerTypeId);
 }

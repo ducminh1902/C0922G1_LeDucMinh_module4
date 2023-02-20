@@ -1,7 +1,8 @@
-package com.example.demo1.service;
+package com.example.demo1.service.customer;
 
 import com.example.demo1.Reponsitory.ICustomerReponsitory;
 import com.example.demo1.model.customer.Customer;
+import com.example.demo1.model.customer.CustomerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerService implements ICustomerService{
+public class CustomerService implements ICustomerService {
 
     @Autowired
     private ICustomerReponsitory customerReponsitory;
@@ -42,8 +43,8 @@ public class CustomerService implements ICustomerService{
     }
 
     @Override
-    public List<Customer> findByNameGender(String name, int gender,String address) {
-        return customerReponsitory.search(name,gender,address);
+    public List<Customer> findByNameGender(String name, String email, String customerTypeId) {
+        return customerReponsitory.search(name,email,customerTypeId);
     }
 
 

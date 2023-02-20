@@ -14,13 +14,14 @@ public class Customer {
     private String dateOfBirth;
     private  int gender;
     private String idCard;
+
     private String phoneNUmber;
     private String email;
     private String address;
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id" ,referencedColumnName = "id")
-    private CustomerType customerType;
+    private CustomerType  customerType;
 
     @OneToMany(mappedBy = "customer")
     private Set<Contract> contractSet;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List Facility</h1>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Area</th>
+    <th>Cost</th>
+    <th>Cost</th>
+    <th>Max People</th>
+    <th>Rent Type Id</th>
+    <th>Facility Type Id</th>
+    <th>Standard Room</th>
+    <th>Description Other Convenience</th>
+    <th>Pool Area </th>
+    <th>Number Floor</th>
+    <th>Facility Free</th>
+  </tr>
+  <tr th:each="facility : ${listFacility}">
+    <td th:text="${facility.id}"></td>
+    <td th:text="${facility.name}"></td>
+    <td th:text="${facility.area}"></td>
+    <td th:text="${facility.cost}"></td>
+    <td th:text="${facility.maxPeople}"></td>
+    <td th:text="${facility.standardRoom}"></td>
+    <td th:text="${facility.descriptionOtherConvience}"></td>
+    <td th:text="${facility.poolArea}"></td>
+    <td th:text="${facility.numberOfFloor}"></td>
+    <td th:text="${facility.facilityFree}"></td>
+  </tr>
+</table>
+</body>
+</html>
