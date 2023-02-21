@@ -12,8 +12,8 @@
 <h1 style="text-align: center;color: darkseagreen">List Customer</h1>
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/showForm}">ADD NEW CUSTOMER</a>
-        <form action="/search" class="d-flex" role="search">
+        <a class="navbar-brand" th:href="@{customer/showForm}">ADD NEW CUSTOMER</a>
+        <form action="/customer/search" class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search" name="name">
             <input class="form-control me-2" type="search" placeholder="Email" aria-label="Search" name="email">
                 <select  name="customerType">
@@ -57,9 +57,9 @@
         <td th:text="${customer.phoneNUmber}"></td>
         <td th:text="${customer.email}"></td>
         <td th:text="${customer.address}"></td>
-        <td><a th:href="@{/delete/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">delete</button></a></td>
-        <td><a th:href="@{/showFormEdit/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">edit</button></a></td>
-        <td><a th:href="@{/detail/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">detail</button></a></td>
+        <td><a th:href="@{customer/delete/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">delete</button></a></td>
+        <td><a th:href="@{customer/showFormEdit/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">edit</button></a></td>
+        <td><a th:href="@{customer/detail/{id}(id=${customer.id})}"><button type="button" class="btn btn-outline-success">detail</button></a></td>
     </tr>
 </table>
 <center>

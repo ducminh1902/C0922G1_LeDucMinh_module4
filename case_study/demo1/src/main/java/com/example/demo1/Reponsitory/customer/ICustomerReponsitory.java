@@ -1,4 +1,4 @@
-package com.example.demo1.Reponsitory;
+package com.example.demo1.Reponsitory.customer;
 
 import com.example.demo1.model.customer.Customer;
 import com.example.demo1.model.customer.CustomerType;

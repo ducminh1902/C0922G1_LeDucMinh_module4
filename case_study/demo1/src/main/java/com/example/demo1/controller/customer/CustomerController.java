@@ -16,13 +16,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("customer")
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;
     @Autowired
     private ICustomerTypeService customerTypeService;
 
-    @GetMapping("/customer")
+    @GetMapping("")
     public String showList(Model model, @PageableDefault (size = 3,page = 0)Pageable pageable){
         Page<Customer> customerPage = customerService.findAll(pageable);
         model.addAttribute("list",customerPage);

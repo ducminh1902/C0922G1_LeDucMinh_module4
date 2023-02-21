@@ -1,8 +1,7 @@
 package com.example.demo1.service.customer;
 
-import com.example.demo1.Reponsitory.ICustomerReponsitory;
+import com.example.demo1.Reponsitory.customer.ICustomerReponsitory;
 import com.example.demo1.model.customer.Customer;
-import com.example.demo1.model.customer.CustomerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1 style="text-align: center">Create New Customer</h1>
-<form style="text-align: center" action="/add" method="post" th:object="${customer}">
+<form style="text-align: center" action="/customer/add" method="post" th:object="${customer}">
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Customer Name</span>
         <input type="text" class="form-control" th:field="*{name}">
