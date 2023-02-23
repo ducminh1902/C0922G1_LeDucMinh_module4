@@ -24,6 +24,11 @@ public class FacilityService implements IFacilityService{
     }
 
     @Override
+    public List<Facility> findAll1() {
+        return facilityReponsitory.findAll();
+    }
+
+    @Override
     public void add(Facility facility) {
         facilityReponsitory.save(facility);
     }

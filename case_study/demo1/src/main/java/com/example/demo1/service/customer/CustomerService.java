@@ -22,8 +22,13 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+    public List<Customer> findAll1() {
+        return customerReponsitory.findAll();
+    }
+
+    @Override
     public void add(Customer customer) {
-        customerReponsitory.save(customer);
+      customerReponsitory.save(customer);
     }
 
     @Override
@@ -33,7 +38,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void delete(int id) {
-    customerReponsitory.deleteById(id);
+        customerReponsitory.deleteById(id);
     }
 
     @Override
@@ -43,7 +48,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public List<Customer> findByNameGender(String name, String email, String customerTypeId) {
-        return customerReponsitory.search(name,email,customerTypeId);
+        return customerReponsitory.search(name, email, customerTypeId);
     }
 
 

@@ -8,15 +8,27 @@
 </head>
 <body>
 <h1 style="color: black;text-align: center" >List Facility</h1>
-<a th:href="@{facility/showForm}">Add New Facility</a>
-<form action="/facility/search">
-  <input type="text" name="name">
-  <select name="facilityType">
-    <option th:value="null">Facility Type</option>
-    <option th:each="facilityType :${facilityTypeList}" th:value="${facilityType.id}" th:text="${facilityType.name}"></option>
-  </select>
-  <button type="submit">Search</button>
-</form>
+
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a th:href="@{facility/showForm}">Add New Facility</a>
+    <form class="d-flex" role="search" action="/facility/search">
+      <input type="text" name="name">
+      <select name="facilityType">
+        <option th:value="null">Facility Type</option>
+        <option th:each="facilityType :${facilityTypeList}" th:value="${facilityType.id}" th:text="${facilityType.name}"></option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+<!--<form action="/facility/search">-->
+
+<!--</form>-->
 <table  class="table caption-top">
   <tr style="color: red">
     <th>#</th>

@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface ICustomerService {
     Page<Customer> findAll(Pageable pageable);
 
+    List<Customer> findAll1();
     void add(Customer customer);
 
     Optional<Customer> findById(int id);

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1 style="text-align: center">Create New Customer</h1>
+<form style="text-align: center" action="/contract/add" method="post" th:object="${contract}">
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text">Start Date</span>
+        <input type="date" class="form-control" th:field="*{startDate}">
+    </div>
+    <br>
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text">End Date</span>
+        <input type="date" class="form-control" th:field="*{endDate}">
+    </div>
+    <br>
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text">Deposite</span>
+        <input type="text" class="form-control" placeholder="1:Nam // 0:Nữ" th:field="*{deposite}">
+    </div>
+    <br>
+    <div class="input-group flex-nowrap">
+     <select th:field="*{customer.id}">
+             <option th:each="customer : ${customer}" th:value="${customer.id}" th:text="${customer.name}"></option>
+     </select>
+    </div>
+    <br>
+    <div class="input-group flex-nowrap">
+        <select th:field="*{employee.id}">
+            <option th:each="employee : ${employee}" th:value="${employee.id}" th:text="${employee.name}"></option>
+        </select>
+    </div>
+    <br>
+    <div class="input-group flex-nowrap">
+        <select th:field="*{facility.id}">
+            <option th:each="facility : ${facility}" th:value="${facility.id}" th:text="${facility.name}"></option>
+        </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-success">Add New Contract</button>
+</form>
+</body>
+</html>

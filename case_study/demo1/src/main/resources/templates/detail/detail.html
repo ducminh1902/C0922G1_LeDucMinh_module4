@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Contract Detail</h1>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Quantity</th>
+    <th>Facility Name</th>
+    <th>Contract Name</th>
+  </tr>
+  <tr th:each="detail :${list2}">
+    <td th:text="${detail.id}"></td>
+    <td th:text="${detail.quantity}"></td>
+    <td th:text="${detail.attachFacility}"></td>
+    <td th:text="${detail.contract.id}"></td>
+  </tr>
+</table>
+</body>
+</html>

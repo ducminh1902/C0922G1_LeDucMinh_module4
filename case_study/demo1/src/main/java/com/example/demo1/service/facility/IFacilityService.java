@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface IFacilityService {
     Page<Facility> findAll(Pageable pageable);
 
+    List<Facility> findAll1();
+
     void add(Facility facility);
 
     void delete(int id);
