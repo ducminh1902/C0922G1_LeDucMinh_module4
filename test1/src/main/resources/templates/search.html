@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1 style="text-align: center">List Student</h1>
+<!--<a th:href="@{student/showForm}">ADD NEW STUDENT</a>-->
+<!--<form action="/student/search">-->
+<!--  <input name="name">-->
+<!--  <select name="rank1">-->
+<!--    <option th:value="null">Rank</option>-->
+<!--    <option th:each="rank : ${rank}" th:value="${rank.id}" th:text="${rank.level}"></option>-->
+<!--  </select>-->
+<!--  <button type="submit">Search</button>-->
+<!--</form>-->
+<a th:href="@{/student}">back to list</a>
+<table class="table table-striped">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Class Name</th>
+    <th>Rank</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  <tr th:each="student : ${list2}">
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.name}"></td>
+    <td th:text="${student.className}"></td>
+    <td th:text="${student.rank1.level}"></td>
+    <td><a th:href="@{student/delete/{id}(id=${student.id})}"><button type="button" class="btn btn-primary">delete</button></a></td>
+    <td><a th:href="@{student/showEdit/{id}(id=${student.id})}"><button type="button" class="btn btn-primary">edit</button></a></td>
+  </tr>
+</table>
+</body>
+</html>

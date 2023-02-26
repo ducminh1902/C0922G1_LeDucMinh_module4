@@ -47,6 +47,7 @@ public class FacilityController {
     public String add(Model model,@ModelAttribute("facility") Facility facility,@PageableDefault Pageable pageable ){
         facilityService.add(facility);
         model.addAttribute("list",facilityService.findAll(pageable));
+        model.addAttribute("facilityTypeList",facilityTypeService.findAll());
         return "facility/list";
     }
 
@@ -55,12 +56,14 @@ public class FacilityController {
     public String delete(Model model, @PathVariable int id,@PageableDefault Pageable pageable){
         facilityService.delete(id);
         model.addAttribute("list",facilityService.findAll(pageable));
+        model.addAttribute("facilityTypeList",facilityTypeService.findAll());
         return"facility/list";
     }
 
     @GetMapping("showFormEdit/{id}")
     public String showFormEdit(Model model,@PathVariable int id){
         Facility facility = facilityService.findById(id).get();
+        model.addAttribute("facilityTypeList",facilityTypeService.findAll());
         model.addAttribute("facility",facility);
         return "facility/edit";
     }
@@ -68,6 +71,7 @@ public class FacilityController {
     @GetMapping("/search")
     public String search(Model model,@RequestParam String name , @RequestParam String facilityType){
         List<Facility> facilityList = facilityService.search(name,facilityType);
+        model.addAttribute("facilityTypeList",facilityTypeService.findAll());
         model.addAttribute("list3",facilityList);
         return "facility/search";
     }
