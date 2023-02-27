@@ -8,11 +8,12 @@
 </head>
 <body>
 <h1 style="text-align: center">Create New Customer</h1>
-<form style="text-align: center" action="/customer/add" method="post" th:object="${customer}">
+<form style="text-align: center" action="/customer/add" method="post" th:object="${customerDto}">
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Customer Name</span>
         <input type="text" class="form-control" th:field="*{name}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <select th:field="*{customerType.id}">
@@ -25,31 +26,37 @@
         <span class="input-group-text">Date Of Birth</span>
         <input type="text" class="form-control" th:field="*{dateOfBirth}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Gender</span>
         <input type="text" class="form-control" placeholder="1:Nam // 0:Nữ" th:field="*{gender}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <span class="input-group-text">ID Card</span>
         <input type="text" class="form-control" th:field="*{idCard}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Phone Number</span>
         <input type="text" class="form-control" th:field="*{phoneNUmber}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('phoneNUmber')}" th:errors="*{phoneNUmber}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Email</span>
         <input type="text" class="form-control" th:field="*{email}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
     <br>
     <div class="input-group flex-nowrap">
         <span class="input-group-text">Address</span>
         <input type="text" class="form-control" th:field="*{address}">
     </div>
+    <p style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
     <br>
     <button type="submit" class="btn btn-outline-success">Save Customer</button>
 </form>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 @Controller
 @RequestMapping("student")
 public class StudentController {
@@ -16,6 +17,7 @@ public class StudentController {
     private IStudentService studentService;
     @Autowired
     private ILevelStudentService levelStudentService;
+
 
 
     @GetMapping("")
@@ -52,5 +54,12 @@ public class StudentController {
         model.addAttribute("student",student);
         model.addAttribute("level",levelStudentService.findAll());
         return "update";
+    }
+
+    @GetMapping("search")
+    public String search(Model model,@RequestParam String nameSearch){
+        List<Student> studentSearch = studentService.findByName(nameSearch);
+        model.addAttribute("list2",studentSearch);
+        return "search";
     }
 }

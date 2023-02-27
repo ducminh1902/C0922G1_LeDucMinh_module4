@@ -41,4 +41,9 @@ public class StudentService implements IStudentService {
     public Optional<Student> findById(int id) {
         return studentRepository.findById(id);
     }
+
+    @Override
+    public List<Student> findByName(String name) {
+        return studentRepository.findStudentByNameContaining(name);
+    }
 }
